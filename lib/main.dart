@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:real_estate/Screen/first_page.dart';
 import 'package:real_estate/Screen/home_page.dart';
+import 'package:real_estate/Screen/home_screens.dart';
 import 'package:real_estate/Screen/login_Screen.dart';
 import 'package:real_estate/Screen/regester.dart';
 import 'package:real_estate/bloc/Auth_bloc/auth_bloc.dart';
+import 'package:real_estate/bloc/home_bloc/home_bloc.dart';
 import 'package:real_estate/firebase_options.dart';
 
 void main() async{
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthBloc(),
         ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
+        )
         
       ],
       child:MaterialApp(
@@ -46,7 +51,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const HomePage();
+              return const HomeScreens();
             } else {
               return const fisrtpage();
             }
