@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:real_estate/Screen/reset_password_screen.dart';
 import 'package:real_estate/bloc/Auth_bloc/auth_bloc.dart';
 
 class Login_Screen extends StatelessWidget {
@@ -89,7 +90,20 @@ class Login_Screen extends StatelessWidget {
                           hintText: 'Password'),
                     ),
                   ),
-                  const Padding(padding: EdgeInsets.all(8)),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>  ResetPasswordScreen()));
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "forget password",
+                          ),
+                        ],
+                      )),
+                  //const Padding(padding: EdgeInsets.all(8)),
                   SizedBox(
                       height: 65,
                       width: 350,
@@ -126,7 +140,7 @@ class Login_Screen extends StatelessWidget {
                             style: TextStyle(fontSize: 20),
                           ))
                     ],
-                  )
+                  ),
                 ],
               ),
             );
